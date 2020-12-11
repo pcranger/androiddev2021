@@ -1,37 +1,27 @@
 package vn.edu.usth.weather;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
-
+    //a splash screen
+    private static int SPLASH_TIME_OUT = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run(){
+                Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(homeIntent);
+                finish();
+            }
+        },SPLASH_TIME_OUT);
 
-    public void ChangeFragment(View view) {
-        Fragment fragment;
-
-        if (view == findViewById(R.id.button)) {
-            fragment = new Fragment1();
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_place, fragment);
-            ft.commit();
-        }
-        if (view == findViewById(R.id.button2)) {
-            fragment = new Fragment2();
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_place, fragment);
-            ft.commit();
-        }
     }
 }
