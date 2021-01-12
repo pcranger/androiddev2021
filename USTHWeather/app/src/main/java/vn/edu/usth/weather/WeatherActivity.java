@@ -22,6 +22,13 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
+//        ForecastFragment ff = new ForecastFragment();
+//        getSupportFragmentManager().beginTransaction().add(R.id.frag_forecaset, ff, null).commit();
+//        WeatherFragment wf = new WeatherFragment();
+//        getSupportFragmentManager().beginTransaction().add(R.id.frag_weather, wf, null).commit();
+
+//        WeatherAndForecastFragment waf = new WeatherAndForecastFragment();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.container, waf).commit();
 
         vp = (ViewPager) findViewById(R.id.viewPager);
         addTabs(vp);
@@ -34,10 +41,9 @@ public class WeatherActivity extends AppCompatActivity {
     private void addTabs(ViewPager viewPager)
     {
         ViewPagerAdapter vap = new ViewPagerAdapter(getSupportFragmentManager());
-        vap.addFrag(new WeatherAndForecastFragment(), "Hanoi, VietNam");
-        vap.addFrag(new WeatherAndForecastFragment(), "Paris, France");
-        vap.addFrag(new WeatherAndForecastFragment(), "Toulouse, France");
-        vap.addFrag(new WeatherAndForecastFragment(), "California, US");
+        vap.addFrag(new WeatherAndForecastFragment(), "Hanoi");
+        vap.addFrag(new WeatherAndForecastFragment(), "Also Hanoi");
+        vap.addFrag(new WeatherAndForecastFragment(), "Still Hanoi");
         viewPager.setAdapter(vap);
     }
 
